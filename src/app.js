@@ -76,34 +76,6 @@ function takePhoto(chatId) {
     });
 }
 
-//Speed Test
-bot.onText(/^\/speedtest/, (msg, match) => {
-  chatId = msg.chat.id;
-  bot.sendMessage(chatId, "Ejecutando SpeedTest en raspberryPi... ");
-
-  require("speedtest-net")().on("downloadspeed", (speed) => {
-    bot.sendMessage(chatId, " Download " + speed + " KB/s");
-    console.log("DOWN: " + speed);
-  });
-
-  require("speedtest-net")().on("uploadspeed", (speed) => {
-    bot.sendMessage(chatId, "Upload " + speed + " MB");
-    console.log("UP: " + speed);
-  });
-});
-
-bot.onText(/^\/temperature/, (msg, match) => {
-  chatId = msg.chat.id;
-  bot.sendMessage(chatId, "Obteniendo Temperatura/humedad del sensor ");
-  if (temperature != null) {
-    bot.sendMessage(chatId, temperatura);
-  }
-  if (humedad != null) {
-    bot.sendMessage(chatId, humedad);
-  }
-  bot.sendMessage(chatId, "Last update: " + dayTime);
-});
-
 bot.onText(/^\hola/, (msg, match) => {
   const chatId = msg.chat.id;
   let userFrom = msg.from.first_name;
@@ -114,12 +86,6 @@ bot.onText(/^\Hola/, (msg, match) => {
   let userFrom = msg.from.first_name;
   console.log(chatId);
   bot.sendMessage(chatId, "Hola " + userFrom + ", en que puedo ayudarte  ?");
-});
-
-bot.onText(/^\edad/, (msg, match) => {
-  const chatId = msg.chat.id;
-  let userFrom = msg.from.first_name;
-  bot.sendMessage(chatId, "ya perdí la cuenta.....");
 });
 
 const request = require("request");
@@ -146,7 +112,7 @@ request
   });
 
 function sendMessage() {
-  let chatId = 986621556;
+  let chatId = 986621556; // CHAT ID to send message
   bot.sendMessage(chatId, "motion detected! ");
   takePhoto(chatId);
 }
