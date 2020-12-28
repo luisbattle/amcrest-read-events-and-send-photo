@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  raspi-bot:
+    build:
+      context: .
+    image: raspi-bot
+    container_name: raspi-bot
+    environment:
+      TOKEN: "TOKEN-HERE"
+      MY_CHANNEL_NAME: "MY-CHANNEL-HERE"
+      NAME_OF_BOT: "NAME-OF.BOT-HERE"
+      AMCREST_USER: "AMCREST-USER-HERE"
+      AMCREST_PASS: "AMCREST-PASS-HERE"
+      AMCREST_API: "http://IP:PORT/cgi-bin/snapshot.cgi?[channel=<channelNo>]"
+      AMCREST_API_EVENTS: "http://IP:PORT/cgi-bin/eventManager.cgi?action=attach&codes=[AlarmLocal%2CVideoMotion%2CVideoLoss%2CVideoBlind]"
+    tty: true
+    entrypoint: ["npm", "run", "start"]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "1"
+
+networks:
+  default:
+    name: raspi-bot

@@ -1,0 +1,22 @@
+{
+  "name": "telegram-bot-sitepoint",
+  "version": "1.0.0",
+  "description": "Telegram bot",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Telegram",
+    "Node.js",
+    "Javascript"
+  ],
+  "author": "LRAB",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "needle": "2.5.2",
+    "node-telegram-bot-api": "0.50.0"
+  }
+}
